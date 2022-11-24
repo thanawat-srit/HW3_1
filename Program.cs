@@ -23,17 +23,22 @@
         }
         for (int i = 0; i < Program.l1.GetLength(); i++)
         {   if (Program.l1.Get(i) == 'J' || Program.l1.Get(i) == 'G' || Program.l1.Get(i) == 'O' || Program.l1.Get(i) == 'R'){
+                bool tf = true;
                 if (Program.l1.Get(i) == 'G'){
-                    CheakG(i);
+                    tf = CheakG(i);
                 }
                 CheakR(i);
+                if(tf){
+                    Console.WriteLine("");
+                }
             }
         }
+            Console.WriteLine("");
         for (int i = 0; i < Program.l1.GetLength(); i++){
             Console.Write("{0}",Program.l1.Get(i));
         }
     }
-    static void CheakG(int GIndex)
+    static bool CheakG(int GIndex)
     {
         if (GIndex >= 3)
         {
@@ -56,9 +61,9 @@
                     }
                     if (count >= 3)
                     {
-                        Console.WriteLine("gInvalid pattern.");
+                        Console.WriteLine("Invalid pattern.");
                         Program.l1.Remove(GIndex);
-                        return;
+                        return false;
                     }
                 }
                 if (MockList.Get(i+1) == 'G')
@@ -72,9 +77,9 @@
                     }
                     if (count >= 3)
                     {
-                        Console.WriteLine("gInvalid pattern.");
+                        Console.WriteLine("Invalid pattern.");
                         Program.l1.Remove(GIndex);
-                        return;
+                        return false;
                     }
                 }
 
@@ -82,7 +87,7 @@
             
         }
         
-        Console.WriteLine("");
+        return true;
         
     }
 
@@ -90,7 +95,7 @@
     {   
         if (Program.l1.Get(RIndex) == 'R'){
             if(RIndex<2){
-                Console.WriteLine("gInvalid pattern.");
+                Console.WriteLine("Invalid pattern.");
                 Program.l1.Remove(RIndex );
                 return;
             }
@@ -101,7 +106,7 @@
             {
                 if (Program.l1.Get(RIndex - 2) == Program.l1.Get(RIndex))
                 {
-                    Console.WriteLine("gInvalid pattern.");
+                    Console.WriteLine("Invalid pattern.");
                     Program.l1.Remove(RIndex );
                     return;
                 }
@@ -109,6 +114,6 @@
         }
         
                 
-        Console.WriteLine("");
+        
     }
 }
